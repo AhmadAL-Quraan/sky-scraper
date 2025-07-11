@@ -3,7 +3,7 @@ NAME = rush-01
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = main.c solver.c utils.c
+SRCS = main.c no_duplication.c valid_rules.c print_puzzle.c solve_puzzle.c check_left_right.c check_up_down.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
@@ -11,13 +11,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
 
-main.o: main.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
-solver.o: solver.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
-utils.o: utils.c
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
